@@ -7,6 +7,7 @@ export const MealCartContext = createContext({
   updateItemQuantity() {},
   cartQuantity() {},
   cartTotal() {},
+  clearCart() {},
   modal: false,
   modalIsOpen() {},
   modalIsClose() {},
@@ -126,6 +127,10 @@ export default function CartContextProvider({ children }) {
     return total;
   };
 
+  const handleClearCart = () => {
+    setCart([]);
+  };
+
   const handleOpenCart = () => {
     setModalIsOpen(true);
   };
@@ -150,6 +155,7 @@ export default function CartContextProvider({ children }) {
     updateItemQuantity: handleUpdateItemQuantity,
     cartQuantity: cartQuantity,
     cartTotal: cartTotal,
+    clearCart: handleClearCart,
     modal: modalIsOpen,
     modalIsOpen: handleOpenCart,
     modalIsClose: handleCloseCart,
